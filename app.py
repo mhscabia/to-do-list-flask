@@ -19,6 +19,14 @@ def index():
     todo_list = TodoItem.query.all()
     return render_template('index.html', todo_list=todo_list)
 
+@app.route("/add", methods=["POST"])
+def add():
+    task = request.form.get("task")
+    todo_item = TodoItem(task=task)
+    db.session.add(todo_item)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

@@ -7,8 +7,17 @@
 </head>
 <body>
     <h1>To-Do List</h1>
-    <form action="">
+    <form action="/add" method="post">
         <input type="text" name="task" id="task" placeholder="Digite uma tarefa...">
         <input type="submit" value="Adicionar">
+    </form>
+    <br>
+    {% for todo in todo_list %}
+        <div>
+            <input type="checkbox" name="todo" id="todo">
+            <label for="todo">{{ todo.task }}</label>
+        </div>
+    {% endfor %}
+
 </body>
 </html>
