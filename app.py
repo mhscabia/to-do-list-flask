@@ -27,6 +27,22 @@ def add():
     db.session.commit()
     return redirect(url_for('index'))
 
+
+@app.route("/update/<int:todo_id>")
+def update(todo_id):
+    todo_item = TodoItem.query.filter_by(id=todo_id).first()
+    todo_item.done = not todo_item.done
+    db.session.commit()
+    return redirect(url_for('index'))
+
+
+@app.route("/delete/<int:todo_id>")
+def delete(todo_id):
+    todo_item = TodoItem.query.filter_by(id=todo_id).first()
+    db.session.delete(todo_item)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

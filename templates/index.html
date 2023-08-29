@@ -14,8 +14,20 @@
     <br>
     {% for todo in todo_list %}
         <div>
-            <input type="checkbox" name="todo" id="todo">
+
+            {% if todo.done == False %}
             <label for="todo">{{ todo.task }}</label>
+            {% else %}
+            <label for="todo"><s>{{ todo.task }}</s></label>
+            {% endif %}
+            
+            {% if todo.done == False %}
+            <a href="/update/{{ todo.id }}">Concluído</a>
+            {% else %}
+            <a href="/update/{{ todo.id }}">Não concluído</a>
+            {% endif %}
+
+            <a href="/delete/{{ todo.id }}">Deletar</a>
         </div>
     {% endfor %}
 
