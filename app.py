@@ -48,18 +48,6 @@ def editar(todo_id):
         return redirect(url_for('index'))
     return render_template('editar.html', todo_item=todo_item)
 
-# @app.route("/editar/<int:todo_id>")
-# def editar(todo_id):
-#     todo_item = TodoItem.query.filter_by(id=todo_id).first()
-    
-#     if request.method == 'POST':
-#         todo_item.task = request.form.get("newTask")
-#         db.session.commit()
-#         return redirect(url_for('index'))
-    
-#     return render_template('editar.html', todo_item=todo_item)
-    
-
 @app.route("/delete/<int:todo_id>")
 def delete(todo_id):
     todo_item = TodoItem.query.filter_by(id=todo_id).first()
