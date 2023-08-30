@@ -28,7 +28,7 @@
         <span style="width: 500px;" class="ui input">
             <input type="text" name="task" id="task" placeholder="Digite uma tarefa...">
         </span>
-        <input class="ui button" type="submit" value="Adicionar">
+        <input class="ui button" type="submit" value="Adicionar Tarefa">
     </form>
     <br>
     {% for todo in todo_list %}
@@ -44,10 +44,11 @@
                 {% if todo.done == False %}
                 <a class="ui primary button" href="/update/{{ todo.id }}">Concluído</a>
                 {% else %}
-                <a class="ui orange button" href="/update/{{ todo.id }}">Não concluído</a>
+                <a class="ui gray button" href="/update/{{ todo.id }}">Desfazer</a>
                 {% endif %}
 
                 <a class="ui red button" href="/delete/{{ todo.id }}">Deletar</a>
+                <a class="ui green button" href="/editar/{{ todo.id }}">Editar</a>
             </span>
         </div>
     {% endfor %}
