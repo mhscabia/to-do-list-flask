@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    
+</head>
+<body>
+    <div style="margin-top: 20px; text-align: center;"  class="ui container">
+    <h1 style="margin-bottom: 30px;" class="ui center aligned header">Editar item</h1>
+    <form class="ui form" action="/editar/{{ todo_item.id }}" method="post">
+        <span style="width: 500px;" class="ui input">
+            <input type="text" name="newTask" id="newTask" value="{{ todo_item.task }}" autocomplete="off">
+        </span>
+        <input class="ui button" type="submit" value="Atualizar Tarefa">
+    </form>
+</div>
+</body>
+</html>
