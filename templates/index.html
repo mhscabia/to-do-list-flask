@@ -4,32 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-do List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <style>
+        .task-text {
+            flex-grow: 1; /* Ocupa todo o espaço disponível */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;  /* Tamanho da fonte */
+            word-wrap: break-word;  /* Quebra de linha automática */
+            text-align: justify; /* Texto justificado */
+            margin-right: 10px; /* Espaçamento entre texto e botões */
+        }
+        .task-buttons {
+            flex-shrink: 0; /* Não encolhe */
+            margin-left: 40px;
+            align-self: center; 
+        }
+    </style>
 </head>
 <body>
-    <h1>To-Do List</h1>
-    <form action="/add" method="post">
-        <input type="text" name="task" id="task" placeholder="Digite uma tarefa...">
-        <input type="submit" value="Adicionar">
+    <div style="margin-top: 20px; text-align: center;"  class="ui container">
+    <h1 style="margin-bottom: 30px;" class="ui center aligned header">To-Do List</h1>
+    <form class="ui form" action="/add" method="post">
+        <span style="width: 500px;" class="ui input">
+            <input type="text" name="task" id="task" placeholder="Digite uma tarefa...">
+        </span>
+        <input class="ui button" type="submit" value="Adicionar">
     </form>
     <br>
     {% for todo in todo_list %}
-        <div>
+        <div class="ui segment" style="display: flex; justify-content: space-between;">
+            <span class="task-text">
+                {% if todo.done == False %}
+                <label for="todo">{{ todo.task }}</label>
+                {% else %}
+                <label for="todo"><s>{{ todo.task }}</s></label>
+                {% endif %}
+            </span>
+            <span class="task-buttons">
+                {% if todo.done == False %}
+                <a class="ui primary button" href="/update/{{ todo.id }}">Concluído</a>
+                {% else %}
+                <a class="ui orange button" href="/update/{{ todo.id }}">Não concluído</a>
+                {% endif %}
 
-            {% if todo.done == False %}
-            <label for="todo">{{ todo.task }}</label>
-            {% else %}
-            <label for="todo"><s>{{ todo.task }}</s></label>
-            {% endif %}
-            
-            {% if todo.done == False %}
-            <a href="/update/{{ todo.id }}">Concluído</a>
-            {% else %}
-            <a href="/update/{{ todo.id }}">Não concluído</a>
-            {% endif %}
-
-            <a href="/delete/{{ todo.id }}">Deletar</a>
+                <a class="ui red button" href="/delete/{{ todo.id }}">Deletar</a>
+            </span>
         </div>
     {% endfor %}
-
+</div>
 </body>
 </html>
