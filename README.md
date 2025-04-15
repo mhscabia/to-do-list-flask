@@ -20,12 +20,11 @@ Siga estes passos para rodar o projeto em sua máquina local:
 - Crie a pasta do ambiente: `py -3 -m venv .venv`
 - Ligue o ambiente virtual: `.venv\Scripts\activate`
 
-### Instalando o Flask
-- Para instalar o Flask, rode o comando: `pip install Flask`
-
 ### Instalando as dependências
-As tarefas criadas são armazenadas em um sqlite, utilizando o SQL Alchemy.
-- Para instalar o SQL Alchemy utilize o comando: `pip install Flask-SQLAlchemy`
+Para instalar as dependências do app utilize:
+- `pip install -r requirements.txt`
+
+Após isso, basta apenas abrir o link gerado no console para ter acesso a aplicação.
 
 Obrigado!
 
